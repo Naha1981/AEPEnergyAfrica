@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEP Energy Africa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #00aa55;
+            --accent-color: #ffd700;
+            --dark-color: #333;
+            --light-color: #f4f4f4;
+            --white: #fff;
+            --dark-bg: #1a1a1a;
+            --dark-card: #2d2d2d;
+            --dark-text: #ffffff;
+            --container-width: 1200px;
+            --section-padding: 5rem 0;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3399ff;
+            --secondary-color: #00cc66;
+            --dark-color: #f4f4f4;
+            --light-color: #2d2d2d;
+            --white: #1a1a1a;
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: var(--section-padding);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            flex: 0 0 200px;
+        }
+
+        .logo img {
+            height: 60px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('aepimages/aep best cover.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: var(--white);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .service-image {
+            height: 100%;
+            min-height: 300px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .service-content ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-content li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-content li:before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent-color);
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.4);
+        }
+
+        /* Continue with additional styles... */
+        /* Team Section */
+        .team-section {
+            background: var(--light-color);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .team-content {
+            padding: 2rem;
+        }
+
+        .team-member h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .position {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(rgba(0,102,204,0.05), rgba(0,102,204,0.1));
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0,102,204,0.1);
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .contact-details i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-logo img {
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-info p {
+            text-align: left;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .powered-by {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .service-card {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="aepimages/AEP Energy Africa Profile_2023.pdf-image-001.jpg" alt="AEP Energy Africa Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#team">Our Team</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to AEP Energy Africa</h1>
+            <p>A Leading African Energy and Resources Commodity Merchant</p>
+            <a href="#contact" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <!-- Minerals and Metals -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="aepimages/coal aep ffor website.jpg" alt="Minerals and Metals">
+                    </div>
+                    <div class="service-content">
+                        <h3>Minerals and Metals</h3>
+                        <ul>
+                            <li>Thermal Coal: A key resource for energy production</li>
+                            <li>Coking Coal: High-quality coal for industrial applications</li>
+                        </ul>
+                        <a href="#contact" class="cta-button">Request Quote</a>
+                    </div>
+                </div>
+
+                <!-- Crude Oil -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="aepimages/crude oil aep website.jpg" alt="Crude Oil and Petroleum">
+                    </div>
+                    <div class="service-content">
+                        <h3>Crude Oil and Petroleum</h3>
+                        <ul>
+                            <li>Light Crude Oil</li>
+                            <li>ULSD (Ultra Low Sulfur Diesel)</li>
+                            <li>EN590</li>
+                            <li>Jet Fuel A1</li>
+                        </ul>
+                        <a href="#contact" class="cta-button">Request Quote</a>
+                    </div>
+                </div>
+
+                <!-- Strategic Investments -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="aepimages/storage tanks aep website.jpg" alt="Strategic Investments">
+                    </div>
+                    <div class="service-content">
+                        <h3>Strategic Investments</h3>
+                        <ul>
+                            <li>Utility-Scale Power Plants</li>
+                            <li>Cogeneration Plants</li>
+                            <li>Transportation Logistics</li>
+                            <li>Tank Storage</li>
+                        </ul>
+                        <a href="#contact" class="cta-button">Request Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rest of the sections... -->
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2>Our Leadership Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="aepimages/nkosi pp.jpg" alt="Nkosi Gugushe">
+                    <div class="team-content">
+                        <h3>Nkosi Gugushe</h3>
+                        <p class="position">Chief Executive Officer</p>
+                        <p>Leading the company since 2017, Nkosi oversees client relationships, supplier networks, and stakeholder management.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-image">
+                        <i class="fas fa-user-circle fa-6x"></i>
+                    </div>
+                    <div class="team-content">
+                        <h3>Tebogo Mekgoe</h3>
+                        <p class="position">Director</p>
+                        <p>An expert in international supply chains and logistics, enabling AEP to better serve its global clients.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-image">
+                        <i class="fas fa-user-circle fa-6x"></i>
+                    </div>
+                    <div class="team-content">
+                        <h3>Jabulani Nyoni</h3>
+                        <p class="position">Chief Financial Officer</p>
+                        <p>Responsible for financial strategy and risk management, with extensive experience in corporate finance and taxation.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-image">
+                        <i class="fas fa-user-circle fa-6x"></i>
+                    </div>
+                    <div class="team-content">
+                        <h3>Nkcubeko Mbambisa</h3>
+                        <p class="position">General Counsel</p>
+                        <p>An admitted attorney overseeing legal, compliance, and risk management across all jurisdictions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interest</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a Service</option>
+                                <option value="minerals">Minerals and Metals</option>
+                                <option value="crude">Crude Oil and Petroleum</option>
+                                <option value="strategic">Strategic Investments</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Corporate Information</h3>
+                    <ul class="contact-details">
+                        <li><i class="fas fa-map-marker-alt"></i> 12th Floor, Sinosteel Plaza, 159 Rivonia Road, Sandton, Johannesburg, 2146, South Africa</li>
+                        <li><i class="fas fa-phone"></i> +27 (0) 82 925 2808</li>
+                        <li><i class="fas fa-globe"></i> <a href="http://www.aep.co.za">www.aep.co.za</a></li>
+                    </ul>
+                    <div class="corporate-details">
+                        <p>Registered Name: AEP Energy Africa (Pty) Ltd</p>
+                        <p>Registration Number: 2017/024904/07</p>
+                        <p>Income Tax Number: 9313693195</p>
+                        <p>VAT Number: 4570278400</p>
+                        <p>Customs Number: CU25310917</p>
+                        <p>CSD Number: MAAA0993473</p>
+                        <p>Petroleum Wholesale Licence Number: W/2023/0748</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <img src="aepimages/AEP Energy Africa Profile_2023.pdf-image-001.jpg" alt="AEP Energy Africa Logo">
+                </div>
+                <p>A leading African energy and resources commodity merchant, committed to delivering excellence in energy solutions.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Our Partners</h4>
+                <ul>
+                    <li>Rand Merchant Bank (RMB)</li>
+                    <li>Standard Bank</li>
+                    <li>Cliffe Dekker Hofmeyr</li>
+                    <li>Ningiza Horner Inc.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AEP Energy Africa. All rights reserved.</p>
+            <p class="powered-by">Powered By: NahaInc AI</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your message. We will get back to you soon!');
+            this.reset();
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .team-member').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
